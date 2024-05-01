@@ -26,7 +26,7 @@
 
         <div id="shipping-info">
           <hr />
-          <p>Informasi Pengiriman :</p>
+          <p>Informasi Pengirim :</p>
           <hr />
           <div class="form-field">
             <input
@@ -71,21 +71,23 @@
 
   <div class="box-element">
     <a class="btn btn-outline-dark" href="{% url 'cart' %}"
-      >&#x2190; Kembali ke keranjang</a
+      >&#x2190; Back to cart</a
     >
     <hr />
-    <h3>Pesanan</h3>
+    <h3>Order Summary</h3>
     <hr />
+    {% for item in items %}
     <div class="cart-row">
       <div style="flex: 2">
-        <img class="row-image" src="{% static 'images/placeholder.png' %}" />
+        <img class="row-image" src="{{ item.product.imageURL }}" />
       </div>
-      <div style="flex: 2"><p>Product 1</p></div>
-      <div style="flex: 1"><p>$20.00</p></div>
-      <div style="flex: 1"><p>x2</p></div>
+      <div style="flex: 2"><p>{{ item.product.name }}</p></div>
+      <div style="flex: 1"><p>{{ item.product.price }}</p></div>
+      <div style="flex: 1"><p>x2{{ item.quantity }}</p></div>
     </div>
-    <h5>Barang: 2</h5>
-    <h5>Total: $40</h5>
+    {% endfor %}
+    <h5>Item: {{ order.get_cart_items }}</h5>
+    <h5>Total: {{ order.get_cart_total|floatformat }}</h5>
   </div>
   {% endblock content %}
 </div>
