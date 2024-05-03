@@ -8,7 +8,10 @@
       <h6><strong>{{ product.name }}</strong></h6>
       <hr />
 
-      <button class="btn btn-outline-secondary add-btn">add to cart</button>
+      <button data-product = {{product.id}} 
+      data-action="add" class="btn 
+      btn-outline-secondary add-btn 
+      update-cart">add to cart</button>
       <a class="btn btn-outline-success" href="#">Detail</a>
       <h4 style="display: inline-block; float: right">
         <strong>{{ product.price|floatformat }}</strong>
